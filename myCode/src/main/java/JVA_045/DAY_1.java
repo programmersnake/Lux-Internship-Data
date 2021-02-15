@@ -5,16 +5,16 @@ import java.util.logging.Logger;
 
 public class DAY_1 {
 
-    private static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
         logger_and_IntLong();
 
         secondsInTheSomeWeeks();
 
+        stringMethod();
     }
 
     private static void secondsInTheSomeWeeks() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("_____________Seconds in the some weeks______________________");
 
         final int DAYS_IN_WEEK = 7;
@@ -44,6 +44,21 @@ public class DAY_1 {
         System.out.println("maxLong + maxLong = " + (Long.MAX_VALUE+Long.MAX_VALUE));
         System.out.println();
         logger.info( "Logger said last message." + Integer.MAX_VALUE );
+    }
+
+    private static void stringMethod() {
+        String str1 = "Denis";
+        String str2 = "Denis";
+        String str3 = new String("Denis");
+
+        System.out.println(str1 == str2);
+        System.out.println(str1 == str3);
+        System.out.println(str2 == str3);
+        System.out.println();
+        System.out.println(str1.equals( str2 ));
+        System.out.println(str1.equals( str3 ));
+        System.out.println(str2.equals( str3 ));
+
     }
 
 }
