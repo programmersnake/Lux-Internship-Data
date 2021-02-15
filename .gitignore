@@ -1,6 +1,7 @@
 ./luxoft-jva001-p1
 .idea
 *.iml
+.class
 out
 
 
