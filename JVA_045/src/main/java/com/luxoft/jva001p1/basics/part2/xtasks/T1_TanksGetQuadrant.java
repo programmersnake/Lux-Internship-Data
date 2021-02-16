@@ -33,7 +33,16 @@ public class T1_TanksGetQuadrant extends JPanel
      */
     String getTankQuadrant(int x, int y)
     {
-        return "a_1";
+        int xxx = x/64;
+        int yyy = y/64 + 1;
+        String abcd = "abcdefghi";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append( abcd.charAt( xxx ) );
+        buffer.append( "_" );
+        buffer.append( yyy );
+        System.out.println(buffer.toString());
+
+        return buffer.toString();
     }
 
     // Magic bellow. Do not worry about this now, you will understand everything in this course.

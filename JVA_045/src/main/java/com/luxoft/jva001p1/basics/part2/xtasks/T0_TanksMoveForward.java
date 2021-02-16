@@ -3,15 +3,41 @@ package com.luxoft.jva001p1.basics.part2.xtasks;
 import javax.swing.*;
 import java.awt.*;
 
-public class T2_TanksMoveForever extends JPanel
+public class T0_TanksMoveForward extends JPanel
 {
     int tankX = 0;
     int tankY = 0;
 
+    /**
+     * Write your code here.
+     */
     void runTheGame()
     {
+        moveForward();
+        moveForward();
+        moveForward();
+
+        // TODO fill free to add more tests here
+    }
+
+    /**
+     * Should move the tank one quadrant right.
+     *
+     * Every quadrant has width of 64px;
+     *
+     * Use:
+     *
+     * repaint() to repaint the screen
+     * sleep(millis) to sleep millis amount of milliseconds
+     */
+    void moveForward()
+    {
+        repaint();
+        tankX += 64;
+        sleep(2000);
         // TODO YOUR CODE HERE
     }
+
 
     // Magic bellow. Do not worry about this now, you will understand everything in this course.
     // Please concentrate on your tasks only.
@@ -21,15 +47,15 @@ public class T2_TanksMoveForever extends JPanel
 
     public static void main(String[] args) throws Exception
     {
-        T2_TanksMoveForever bf = new T2_TanksMoveForever();
+        T0_TanksMoveForward bf = new T0_TanksMoveForward();
         bf.runTheGame();
     }
 
-    public T2_TanksMoveForever() throws Exception
+    public T0_TanksMoveForward() throws Exception
     {
         JFrame frame = new JFrame("MOVE TANK FORWARD");
         frame.setLocation(500, 150);
-        frame.setMinimumSize(new Dimension(BF_WIDTH, BF_HEIGHT + 22));
+        frame.setMinimumSize(new Dimension(BF_WIDTH + 22, BF_HEIGHT + 22));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();

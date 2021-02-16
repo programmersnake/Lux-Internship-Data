@@ -7,12 +7,15 @@ public class T5_TanksMoveToQuadrant extends JPanel
 {
     int tankX = 0;
     int tankY = 0;
+    int step = 1;
 
     void runTheGame()
     {
         moveToQuadrant("h3");
         moveToQuadrant("b6");
         moveToQuadrant("a3");
+        moveToQuadrant("a1");
+        moveToQuadrant("i7");
     }
 
     /**
@@ -22,12 +25,78 @@ public class T5_TanksMoveToQuadrant extends JPanel
      */
     void move(int direction)
     {
-        // TODO SHOULD BE IMPLEMENTED IN CLASS
+        if(direction == 1)
+            moveUp();
+        else if(direction == 2)
+            moveRight();
+        else if(direction == 3)
+            moveDown();
+        else
+            moveLeft();
     }
 
     void moveToQuadrant(String quadrant)
     {
+        // h3
+        while(true) {
+            repaint();
+            char c1 = quadrant.charAt( 0 );
+            char c1Int = quadrant.charAt( 1 );
+            char cTank = getTankQuadrant().charAt( 0 );
+            char cTankInt = getTankQuadrant().charAt( 1 );
+
+            if ( c1 > cTank )
+                moveRight();
+            else if ( c1 < cTank )
+                moveLeft();
+            else if (c1Int > cTankInt)
+                moveDown();
+            else if (c1Int < cTankInt)
+                moveUp();
+            else
+                break;
+
+            sleep(10);
+
+        }
         // TODO YOUR CODE HERE
+    }
+
+    private String getTankQuadrant() {
+        int xxx = tankX/64;
+        int yyy = tankY/64 + 1;
+        String abcd = "abcdefghi";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append( abcd.charAt( xxx ) );
+        buffer.append( yyy );
+        System.out.println(buffer.toString());
+
+        return buffer.toString();
+    }
+
+    private void moveRight() {
+        if(tankX<=576)
+            tankX += step;
+        System.out.println("Right");
+
+    }
+
+    private void moveLeft() {
+        if(tankX>=0)
+            tankX -= step;
+        System.out.println("Left");
+    }
+
+    private void moveUp() {
+        if(tankY>=0)
+            tankY -= step;
+        System.out.println("UP");
+    }
+
+    private void moveDown() {
+        if(tankY<=576)
+            tankY += step;
+        System.out.println("Down");
     }
 
 

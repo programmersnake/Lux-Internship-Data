@@ -3,6 +3,9 @@ package JVA_045;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+/**
+ * 15.02.2021
+ */
 public class DAY_1 {
 
     public static void main(String[] args) {

@@ -25,6 +25,7 @@
     <modules>
         <module>untitled</module>
         <module>myCode</module>
+        <module>JVA_045</module>
     </modules>
     <dependencies>
         <dependency>

@@ -3,38 +3,37 @@ package com.luxoft.jva001p1.basics.part2.xtasks;
 import javax.swing.*;
 import java.awt.*;
 
-public class T0_TanksMoveForward extends JPanel
+public class T2_TanksMoveForever extends JPanel
 {
     int tankX = 0;
     int tankY = 0;
+    int side = 1;
+    int step = 64;
 
-    /**
-     * Write your code here.
-     */
     void runTheGame()
     {
-        moveForward();
-        moveForward();
-        moveForward();
-
-        // TODO fill free to add more tests here
+        while(true) {
+            repaint();
+            if ( side == 1 ) {
+                moveRight();
+            } else if (side == 0) {
+                moveLeft();
+            }
+            sleep( 50 );
+        }
     }
 
-    /**
-     * Should move the tank one quadrant right.
-     *
-     * Every quadrant has width of 64px;
-     *
-     * Use:
-     *
-     * repaint() to repaint the screen
-     * sleep(millis) to sleep millis amount of milliseconds
-     */
-    void moveForward()
-    {
-        // TODO YOUR CODE HERE
+    private void moveRight() {
+        tankX += step;
+        if(tankX>=500)
+            side = 0;
     }
 
+    private void moveLeft() {
+        tankX -= step;
+        if(tankX<=0)
+            side = 1;
+    }
 
     // Magic bellow. Do not worry about this now, you will understand everything in this course.
     // Please concentrate on your tasks only.
@@ -44,15 +43,15 @@ public class T0_TanksMoveForward extends JPanel
 
     public static void main(String[] args) throws Exception
     {
-        T0_TanksMoveForward bf = new T0_TanksMoveForward();
+        T2_TanksMoveForever bf = new T2_TanksMoveForever();
         bf.runTheGame();
     }
 
-    public T0_TanksMoveForward() throws Exception
+    public T2_TanksMoveForever() throws Exception
     {
-        JFrame frame = new JFrame("MOVE TANK FORWARD");
+        JFrame frame = new JFrame("MOVE TANK FOREWER");
         frame.setLocation(500, 150);
-        frame.setMinimumSize(new Dimension(BF_WIDTH + 22, BF_HEIGHT + 22));
+        frame.setMinimumSize(new Dimension(BF_WIDTH, BF_HEIGHT + 22));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();
