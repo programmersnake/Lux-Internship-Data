@@ -22,6 +22,9 @@ public class T0_Swap
      */
     public static void swap(int[] data, int idx1, int idx2)
     {
-        // TODO YOUR CODE HERE
+        data[idx1] = data[idx1] - data[idx2];
+        data[idx2] = data[idx2] + data[idx1];
+        data[idx1] = data[idx2] - data[idx1];
+
     }
 }

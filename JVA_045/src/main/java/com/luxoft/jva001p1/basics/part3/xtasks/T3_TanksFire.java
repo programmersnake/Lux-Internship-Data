@@ -41,8 +41,7 @@ public class T3_TanksFire extends JPanel
             {"B", " ", " ", "B", "B", "B", " ", " ", "B"}
     };
 
-    void runTheGame() throws Exception
-    {
+    void runTheGame() throws Exception {
         printCurrentBattleField();
 
         while (true)
@@ -61,9 +60,30 @@ public class T3_TanksFire extends JPanel
      * Ignore all the objects on battle field for now.
      *
      */
-    void fire()
-    {
-        // TODO YOUR CODE HERE
+    void fire() {
+        bulletX = tankX + 28;
+        bulletY = tankY + 28;
+        while((bulletX<576)&&(bulletX>0)&&(bulletY<576)&&(bulletY>0)) {
+            turn( 1 );
+            move( tankDirection );
+            sleep( 20 );
+        }
+    }
+
+    private void moveBulletLeft() {
+        bulletX-=2;
+    }
+
+    private void moveBulletDown() {
+        bulletY+=2;
+    }
+
+    private void moveBulletRight() {
+        bulletX+=2;
+    }
+
+    private void moveBulletUp() {
+        bulletY-=2;
     }
 
     private void printCurrentBattleField()
@@ -74,18 +94,25 @@ public class T3_TanksFire extends JPanel
         }
     }
 
-    int[] getQuadrant(int x, int y)
-    {
+    int[] getQuadrant(int x, int y) {
         return new int[] {x / 64, y / 64};
     }
 
-    void move(int direction)
-    {
+    void move(int direction) {
+        if ( direction == 1 ) {
+            moveBulletUp();
+        } else if ( direction == 2 ) {
+            moveBulletRight();
+        } else if ( direction == 3 ) {
+            moveBulletDown();
+        } else if ( direction == 4 ) {
+            moveBulletLeft();
+        }
+
         // TODO SHOULD BE ALREADY IMPLEMENTED
     }
 
-    void turn(int direction)
-    {
+    void turn(int direction) {
         tankDirection = direction;
         repaint();
     }

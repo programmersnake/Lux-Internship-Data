@@ -18,8 +18,7 @@ public class T2_BattleField
             {" ", " ", " ", "T", "E", " ", " ", " ", " "}
     };
 
-    void runTheGame() throws Exception
-    {
+    void runTheGame() throws Exception {
         printCurrentBattleField();
     }
 
@@ -29,6 +28,12 @@ public class T2_BattleField
     private void printCurrentBattleField()
     {
         // TODO YOUR CODE HERE
+        for (String[] lineInts: battleField) {
+            for (String string: lineInts) {
+                System.out.print(string);
+            }
+            System.out.println();
+        }
     }
 
 
@@ -42,7 +47,6 @@ public class T2_BattleField
         bf.runTheGame();
     }
 
-    public T2_BattleField() throws Exception
-    {
+    public T2_BattleField() throws Exception {
     }
 }

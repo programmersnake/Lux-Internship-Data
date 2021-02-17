@@ -2,11 +2,13 @@ package com.luxoft.jva001p1.basics.part2.xtasks;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
-public class T4_TanksMoveRandom extends JPanel
-{
+public class T4_TanksMoveRandom extends JPanel {
+    private Random rand = new Random();
     int tankX = 0;
     int tankY = 0;
+    int step = 2;
 
     void runTheGame()
     {
@@ -16,19 +18,90 @@ public class T4_TanksMoveRandom extends JPanel
         }
     }
 
+    void randomMove()
+    {
+        int randomX = rand.nextInt(512);
+        int randomY = rand.nextInt(515);
+        String needQuadrant = getStringQuadrant( randomX, randomY );
+        System.out.println(needQuadrant);
+
+        moveToQuadrant( needQuadrant );
+    }
+
+    private String getStringQuadrant(int x, int y) {
+        int xxx = x/64;
+        int yyy = y/64 + 1;
+        String abcd = "abcdefghi";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append( abcd.charAt( xxx ) );
+        buffer.append( yyy );
+
+        return buffer.toString();
+    }
+
     /**
      * One method call should smoothly move the tank one quadrant according to given direction.
      *
-     * @param direction can be 1 - up, 2 - right, 3 - down, 4 - right
+     * @param quadrant
      */
-    void move(int direction)
-    {
-        // TODO SHOULD BE IMPLEMENTED IN CLASS
+    private void moveToQuadrant(String quadrant) {
+        while(true) {
+            repaint();
+            char c1 = quadrant.charAt( 0 );
+            char c1Int = quadrant.charAt( 1 );
+            char cTank = getThisTankQuadrant().charAt( 0 );
+            char cTankInt = getThisTankQuadrant().charAt( 1 );
+
+            if ( c1 > cTank )
+                moveRight();
+            else if ( c1 < cTank )
+                moveLeft();
+            else if (c1Int > cTankInt)
+                moveDown();
+            else if (c1Int < cTankInt)
+                moveUp();
+            else
+                break;
+
+            sleep(10);
+
+        }
     }
 
-    void randomMove()
-    {
-        // TODO YOUR CODE HERE
+    private String getThisTankQuadrant() {
+        int xxx = tankX/64;
+        int yyy = tankY/64 + 1;
+        String abcd = "abcdefghi";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append( abcd.charAt( xxx ) );
+        buffer.append( yyy );
+
+        return buffer.toString();
+    }
+
+    private void moveRight() {
+        if(tankX<=576)
+            tankX += step;
+//        System.out.println("Right");
+
+    }
+
+    private void moveLeft() {
+        if(tankX>=0)
+            tankX -= step;
+//        System.out.println("Left");
+    }
+
+    private void moveUp() {
+        if(tankY>=0)
+            tankY -= step;
+//        System.out.println("UP");
+    }
+
+    private void moveDown() {
+        if(tankY<=576)
+            tankY += step;
+//        System.out.println("Down");
     }
 
 

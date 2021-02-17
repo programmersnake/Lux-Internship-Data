@@ -43,23 +43,65 @@ public class T1_Sort
      * Method should sort data array ascending order.
      *
      */
-    public static void sortAsc(int[] data)
-    {
+    public static void sortAsc(int[] data) {
         System.out.println(Arrays.toString(data));
 
-        // TODO YOUR CODE HERE
+        //bubbleSort( data );
+        binarySort( data, 0, data.length-1 );
 
         System.out.println(Arrays.toString(data));
     }
 
+    public static void bubbleSort(int[] inputArray) {
+        int[] tempArray = inputArray;
+        boolean isSorted = false;
+        while(!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < tempArray.length - 1; i++) {
+                if (tempArray[i] > tempArray[i+1]) {
+                    int tempValue = tempArray[i];
+                    tempArray[i] = tempArray[i+1];
+                    tempArray[i+1] = tempValue;
+                    isSorted = false;
+                }
+            }
+        }
+    }
+
+    private static void binarySort(int[] inputArray, int begin, int end) {
+        if (end <= begin) return;
+        int pivot = partition(inputArray, begin, end);
+        binarySort(inputArray, begin, pivot-1);
+        binarySort(inputArray, pivot+1, end);
+    }
+
+    private static int partition(int[] array, int begin, int end) {
+        int pivot = end;
+
+        int counter = begin;
+        for (int i = begin; i < end; i++) {
+            if (array[i] < array[pivot]) {
+                int temp = array[counter];
+                array[counter] = array[i];
+                array[i] = temp;
+                counter++;
+            }
+        }
+        int temp = array[pivot];
+        array[pivot] = array[counter];
+        array[counter] = temp;
+
+        return counter;
+    }
 
     /**
      *
      * Method should exchange values with idx1 and idx2 in data array.
      *
      */
-    public static void swap(int[] data, int idx1, int idx2)
-    {
-        // TODO SHOULD BE ALREADY IMPLEMENTED
+    public static void swap(int[] data, int idx1, int idx2) {
+        data[idx1] = data[idx1] - data[idx2];
+        data[idx2] = data[idx2] + data[idx1];
+        data[idx1] = data[idx2] - data[idx1];
     }
 }

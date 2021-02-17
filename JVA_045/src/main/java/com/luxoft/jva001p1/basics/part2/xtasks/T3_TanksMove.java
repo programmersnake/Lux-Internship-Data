@@ -7,6 +7,7 @@ public class T3_TanksMove extends JPanel
 {
     int tankX = 0;
     int tankY = 0;
+    int step = 2;
 
     void runTheGame()
     {
@@ -30,9 +31,57 @@ public class T3_TanksMove extends JPanel
      *
      * @param direction can be 1 - up, 2 - right, 3 - down, 4 - left
      */
-    void move(int direction)
-    {
-        // TODO YOUR CODE HERE
+    void move(int direction) {
+        boolean canMove = true;
+        while(canMove) {
+            repaint();
+            if ( direction == 1 )
+                canMove = moveUp();
+            else if ( direction == 2 )
+                canMove = moveRight();
+            else if ( direction == 3 )
+                canMove = moveDown();
+            else if ( direction == 4 )
+                canMove = moveLeft();
+            System.out.println("can move = "+canMove+"; tankX="+tankX+"; tankY="+tankY);
+            sleep(30);
+        }
+    }
+
+    private boolean moveRight() {
+        if(tankX<500) {
+            tankX += step;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    private boolean moveLeft() {
+        if(tankX>0) {
+            tankX -= step;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    private boolean moveUp() {
+        if(tankY>0) {
+            tankY -= step;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    private boolean moveDown() {
+        if(tankY<500) {
+            tankY += step;
+            return true;
+        }
+        else
+            return false;
     }
 
 
