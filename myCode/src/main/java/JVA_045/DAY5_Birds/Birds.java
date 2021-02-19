@@ -105,6 +105,55 @@ public class Birds {
         return Integer.parseInt(bird[SOLD_ID]);
     }
 
+    private int getPRICE_TO_STOCK(String[] bird) {
+        return Integer.parseInt(bird[PRICE_TO_STOCK_ID]);
+    }
+
+    public void changeThePrice(String[] bird, int newPrice) {
+        bird[PRICE_ID] = String.valueOf( newPrice );
+    }
+
+    public void printAllBirdsCountWhichLessThanInputValue(int value) {
+        StringBuilder builder = new StringBuilder();
+        for(String[] bird:birds) {
+            if(Integer.valueOf( bird[COUNT_ID] ) < value) {
+                builder.append( bird[Name_ID] + "; " );
+            }
+        }
+        System.out.println();
+        System.out.println("На складе " + builder.toString() + " меньше, чем " + value + ".");
+    }
+
+    public void printSumBenefitsWithoutPriceOfPurchase() {
+        int sum = 0;
+        for(String[] bird: birds) {
+            sum += (Integer.valueOf( bird[SOLD_ID] ) * Integer.valueOf( bird[PRICE_ID] ));
+        }
+        System.out.println();
+        System.out.println("Получено выручки на сумму: " + sum + " USD.");
+    }
+
+    public void printSumBenefitsWithPriceOfPurchase() {
+        int sum = 0;
+        for(String[] bird: birds) {
+            sum += ((Integer.valueOf( bird[SOLD_ID] ) * Integer.valueOf( bird[PRICE_ID] )) - Integer.valueOf( bird[PRICE_TO_STOCK_ID] ));
+        }
+        System.out.println();
+        System.out.println("Получено выручки на сумму: " + sum + " USD.");
+    }
+
+    public void printInfoAboutShopWithBenefits() {
+        System.out.println();
+        System.out.println("------------------INFO ABOUT SHOP------------------------------");
+
+        for (int i = 0; i < countOfBirds; i++)
+            System.out.println(getType(birds[i]) + " Цена: " + getPrice(birds[i]) + " Кол-во: " + getCount(birds[i]) + " Прибыль: " + ( getCount( birds[i] ) * getPrice( birds[i] ) - getPRICE_TO_STOCK( birds[i] ) ));
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.println();
+    }
+
+
     public static void main(String[] args) {
         Birds birds = new Birds();
         birds.printInfoAboutShop();
