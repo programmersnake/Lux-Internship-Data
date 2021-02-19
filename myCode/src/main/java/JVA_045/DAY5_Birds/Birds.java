@@ -4,21 +4,21 @@ import java.util.Arrays;
 
 public class Birds {
 
-    private static final int Name_ID = 0;
-    private static final int PRICE_ID = 1;
-    private static final int COUNT_ID = 2;
-    private static final int SOLD_ID = 3;
-    private static final int PRICE_TO_STOCK_ID = 4;
+    private final int Name_ID = 0;
+    private final int PRICE_ID = 1;
+    private final int COUNT_ID = 2;
+    private final int SOLD_ID = 3;
+    private final int PRICE_TO_STOCK_ID = 4;
 
-    static String[][] birds = new String[100][];
-    static int countOfBirds = 0;
+    private String[][] birds = new String[100][];
+    private int countOfBirds = 0;
 
-    public static void addBirdToStock(String type, int price, int count, int priceToStock) {
+    public void addBirdToStock(String type, int price, int count, int priceToStock) {
         String[] bird = createBird(type, price, count, priceToStock);
         buyToStock(bird);
     }
 
-    public static void printInfoAboutShop() {
+    public void printInfoAboutShop() {
         System.out.println();
         System.out.println("------------------INFO ABOUT SHOP------------------------------");
 
@@ -29,25 +29,22 @@ public class Birds {
         System.out.println();
     }
 
-    public static void buyToStock (String[] bird) {
+    public void buyToStock (String[] bird) {
         doDoubleStock();
-
         String[] foundArrayStrings = find(getType(bird));
-
         if( foundArrayStrings !=null)
             addToCount( foundArrayStrings, getCount( bird ) );
         else
             birds[countOfBirds++] = bird;
-
         System.out.println("Купили на склад " + getCount( bird ) + " " + getType( bird ));
     }
 
-    private static void doDoubleStock() {
+    private void doDoubleStock() {
         if( birds.length * 0.9 > countOfBirds)
             birds = Arrays.copyOf( birds, birds.length * 2 );
     }
 
-    public static String[] createBird(String type, int price, int count, int priceToStock) {
+    public String[] createBird(String type, int price, int count, int priceToStock) {
         String[] bird = new String[5];
 
         bird[Name_ID] = type;
@@ -59,7 +56,7 @@ public class Birds {
         return bird;
     }
 
-    private static String[] find(String type) {
+    private String[] find(String type) {
         for (int i = 0; i < countOfBirds; i++) {
             String[] bird = birds[i];
             if (getType(bird).equals(type))
@@ -68,23 +65,23 @@ public class Birds {
         return null;
     }
 
-    private static void addToCount(String[] bird, int count) {
+    private void addToCount(String[] bird, int count) {
         bird[COUNT_ID] = String.valueOf(getCount(bird) + count);
     }
 
-    private static String getType(String[] bird) {
+    private String getType(String[] bird) {
         return bird[Name_ID];
     }
 
-    private static int getPrice(String[] bird) {
+    private int getPrice(String[] bird) {
         return Integer.parseInt(bird[PRICE_ID]);
     }
 
-    private static int getCount(String[] bird) {
+    private int getCount(String[] bird) {
         return Integer.parseInt(bird[COUNT_ID]);
     }
 
-    public static void sellFromStock(String type, int count) {
+    public void sellFromStock(String type, int count) {
         String[] bird = find(type);
 
         if (bird == null || getCount(bird) == 0)
@@ -95,32 +92,28 @@ public class Birds {
         }
     }
 
-    private static void sell(String[] bird, int count) {
+    private void sell(String[] bird, int count) {
         addToCount(bird, -count);
-        addToSold(bird, count);
+        addToSoldCount(bird, count);
     }
 
-    private static void addToSold(String[] bird, int countSold) {
+    private void addToSoldCount(String[] bird, int countSold) {
         bird[SOLD_ID] = String.valueOf(getSold(bird) + countSold);
     }
 
-    private static int getSold(String[] bird) {
+    private int getSold(String[] bird) {
         return Integer.parseInt(bird[SOLD_ID]);
     }
 
     public static void main(String[] args) {
-
-        printInfoAboutShop();
-
-        addBirdToStock("Курица", 5, 50, 2);
-        addBirdToStock( "Орел", 50, 5, 30 );
-        addBirdToStock("Утка", 10, 20, 5);
-
-        printInfoAboutShop();
-
-        addBirdToStock("Сокол", 40, 10, 20);
-
-        printInfoAboutShop();
+        Birds birds = new Birds();
+        birds.printInfoAboutShop();
+        birds.addBirdToStock("Курица", 5, 50, 2);
+        birds.addBirdToStock( "Орел", 50, 5, 30 );
+        birds.addBirdToStock("Утка", 10, 20, 5);
+        birds.printInfoAboutShop();
+        birds.addBirdToStock("Сокол", 40, 10, 20);
+        birds.printInfoAboutShop();
     }
 
 }
