@@ -29,20 +29,23 @@ public class PostOffice {
 
     public ArrayList<Letter> receiveLetterBySender(Person fromThisPerson) {
         ArrayList<Letter> tempLettersList = new ArrayList<>();
-        for (Letter letter:sentLetters) {
-            if(letter.getFromName().equals( fromThisPerson.getName() )) {
+        for (Letter letter : sentLetters) {
+            if ( letter.getFromName().equals( fromThisPerson ) ) {
                 tempLettersList.add( letter );
                 deliveredLetters.add( letter );
-                sentLetters.remove( letter );
             }
         }
+
+        tempLettersList.forEach( letter -> {
+            sentLetters.remove( letter );
+        } );
         return tempLettersList;
     }
 
     public ArrayList<Letter> receiveLetterByGetter(Person toThisPerson) {
         ArrayList<Letter> tempLettersList = new ArrayList<>();
         for (Letter letter:sentLetters) {
-            if(letter.getToName().equals( toThisPerson.getName() )) {
+            if ( letter.getToName().equals( toThisPerson ) ) {
                 tempLettersList.add( letter );
                 deliveredLetters.add( letter );
             }

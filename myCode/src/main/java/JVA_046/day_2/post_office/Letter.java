@@ -3,8 +3,8 @@ package JVA_046.day_2.post_office;
 public class Letter {
 
     private String text;
-    private String fromName;
-    private String toName;
+    private Person fromName;
+    private Person toName;
 
     public String getText() {
         return text;
@@ -14,19 +14,19 @@ public class Letter {
         this.text = text;
     }
 
-    public String getFromName() {
+    public Person getFromName() {
         return fromName;
     }
 
-    public void setFromName(String fromName) {
+    public void setFromName(Person fromName) {
         this.fromName = fromName;
     }
 
-    public String getToName() {
+    public Person getToName() {
         return toName;
     }
 
-    public void setToName(String toName) {
+    public void setToName(Person toName) {
         this.toName = toName;
     }
 
