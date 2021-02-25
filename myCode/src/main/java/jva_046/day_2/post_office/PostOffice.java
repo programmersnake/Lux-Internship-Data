@@ -58,4 +58,56 @@ public class PostOffice {
         return tempLettersList;
     }
 
+    public void printHowMuchLettersSent() {
+        System.out.println( "Need Delivered letters: " +
+                getSentLetters().size() +
+                "; All sent Letters: " +
+                (getSentLetters().size() + getDeliveredLetters().size()) );
+    }
+
+    public void printHowMuchLettersDelivered() {
+        System.out.println("Delivered letters: " + getDeliveredLetters().size());
+    }
+
+    /**
+     *
+     * @param filter
+     * case "all" getAllLettersCopies
+     * case "" equivalent "all"
+     * case "from" getAllLettersCopiesFromName
+     * case "to" getAllLettersCopiesToName
+     *
+     * @param name
+     * if(filter.equals("all")) than not use
+     *
+     */
+    public void printLetterCopies(String filter, String name) {
+        ArrayList<Letter> copiesLetters = new ArrayList<>();
+        copiesLetters.addAll( getDeliveredLetters() );
+        copiesLetters.addAll( getSentLetters() );
+
+        ArrayList<Letter> tempLetterArrayList = new ArrayList<>();
+        if(filter.toLowerCase().equals( "from" )) {
+            for (Letter letter:copiesLetters) {
+                if ( !letter.getFromName().getName().equals( name ) ) {
+                    tempLetterArrayList.add( letter );
+                }
+            }
+        }
+        else if(filter.toLowerCase().equals( "to" )) {
+            for (Letter letter:copiesLetters) {
+                if ( !letter.getToName().getName().equals( name ) ) {
+                    tempLetterArrayList.add( letter );
+                }
+            }
+        }
+
+        tempLetterArrayList.forEach( letter -> {
+            copiesLetters.remove( letter );
+        } );
+
+        System.out.println("CopiesLetters: " + copiesLetters);
+
+    }
+
 }

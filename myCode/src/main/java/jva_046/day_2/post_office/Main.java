@@ -79,70 +79,17 @@ public class Main {
         System.out.println("___Final___Get(receive)___");
         System.out.println();
 
-        printHowMuchLettersSent( postOffice );
+        postOffice.printHowMuchLettersSent();
         System.out.println();
-        printHowMuchLettersDelivered( postOffice );
+        postOffice.printHowMuchLettersDelivered();
         System.out.println( "---> All" );
-        printLetterCopies( postOffice, "all", "" );
+        postOffice.printLetterCopies("all", "" );
         System.out.println( "---> From " + person1.getName() );
-        printLetterCopies( postOffice, "from", person1.getName() );
+        postOffice.printLetterCopies("from", person1.getName() );
 
         System.out.println();
         System.out.println("___Final___");
         System.out.println();
-
-    }
-
-    public static void printHowMuchLettersSent(PostOffice postOffice) {
-        System.out.println( "Need Delivered letters: " +
-                postOffice.getSentLetters().size() +
-                "; All sent Letters: " +
-                (postOffice.getSentLetters().size() + postOffice.getDeliveredLetters().size()) );
-    }
-
-    public static void printHowMuchLettersDelivered(PostOffice postOffice) {
-        System.out.println("Delivered letters: " + postOffice.getDeliveredLetters().size());
-    }
-
-    /**
-     * @param postOffice
-     *
-     * @param filter
-     * case "all" getAllLettersCopies
-     * case "" equivalent "all"
-     * case "from" getAllLettersCopiesFromName
-     * case "to" getAllLettersCopiesToName
-     *
-     * @param name
-     * if(filter.equals("all")) than not use
-     *
-     */
-    public static void printLetterCopies(PostOffice postOffice, String filter, String name) {
-        ArrayList<Letter> copiesLetters = new ArrayList<>();
-        copiesLetters.addAll( postOffice.getDeliveredLetters() );
-        copiesLetters.addAll( postOffice.getSentLetters() );
-
-        ArrayList<Letter> tempLetterArrayList = new ArrayList<>();
-        if(filter.toLowerCase().equals( "from" )) {
-            for (Letter letter:copiesLetters) {
-                if ( !letter.getFromName().getName().equals( name ) ) {
-                    tempLetterArrayList.add( letter );
-                }
-            }
-        }
-        else if(filter.toLowerCase().equals( "to" )) {
-            for (Letter letter:copiesLetters) {
-                if ( !letter.getToName().getName().equals( name ) ) {
-                    tempLetterArrayList.add( letter );
-                }
-            }
-        }
-
-        tempLetterArrayList.forEach( letter -> {
-            copiesLetters.remove( letter );
-        } );
-
-        System.out.println("CopiesLetters: " + copiesLetters);
 
     }
 
