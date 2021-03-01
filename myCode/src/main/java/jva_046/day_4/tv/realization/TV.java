@@ -5,7 +5,7 @@ public class TV {
     private boolean isOn;
 
     private int channel;
-    private final int maxChannel = 50;
+    private int maxChannel = 50;
 
     private int volume;
     private final int maxVolume = 100;
@@ -87,7 +87,7 @@ public class TV {
         this.volume = volume;
     }
 
-    public String getInfo() {
+    public String toString() {
         return "TV[" +
                 "isOn=" + isOn +
                 ", channel=" + channel +

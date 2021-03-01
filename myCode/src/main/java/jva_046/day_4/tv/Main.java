@@ -3,7 +3,6 @@ package jva_046.day_4.tv;
 import jva_046.day_4.tv.realization.RemoteController;
 import jva_046.day_4.tv.realization.TV;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         TV tv = new TV();
         RemoteController controller = new RemoteController(tv);
-        controller.addDefaultButtonsToTheController();
 
         Scanner scanner = new Scanner( System.in );
 
@@ -28,7 +26,7 @@ public class Main {
             else if(inputString.equals( "help" ))
                 printHelpInfo();
             else if(inputString.equals( "info" ))
-                System.out.println(tv.getInfo());
+                System.out.println( tv.toString() );
             else
                 channelListener( controller, inputString, tv );
         }
@@ -38,7 +36,7 @@ public class Main {
         try {
             Integer inputInteger = Integer.valueOf( inputString );
             controller.getButtons().get( inputInteger ).click();
-            System.out.println(tv.getInfo());
+            System.out.println( tv.toString() );
         } catch(Exception ex) {}
     }
 

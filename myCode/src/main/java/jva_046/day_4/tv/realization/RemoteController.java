@@ -15,6 +15,7 @@ public class RemoteController {
     private ArrayList<AbstractButton> buttons = new ArrayList<>();
 
     public RemoteController(TV tv) {
+        addDefaultButtonsToTheController();
         this.tv = tv;
     }
 
@@ -27,7 +28,7 @@ public class RemoteController {
         System.out.println();
     }
 
-    public void addDefaultButtonsToTheController() {
+    private void addDefaultButtonsToTheController() {
         AbstractButton turnOnOff = new TurnOnOff( tv );
         turnOnOff.setName( "TurnOnOff" );
 
