@@ -1,17 +1,16 @@
-package com.luxoft.jva001p1.generics.xtasks.bankapp.exceptions;
+package jva_048.day_1.generics.bankapp.exceptions;
 
 public class OverdraftLimitExceededException extends NotEnoughFundsException {
-	
+
 	private static final long serialVersionUID = -3737648528527468343L;
 	private double overdraft;
 
 	public OverdraftLimitExceededException(NotEnoughFundsException e, double overdraft) {
-        super(e.getId(), e.getBalance(), e.getAmount(), e.getMessage());
-        this.overdraft = overdraft;
-    }
-	
+		super( e.getId(), e.getBalance(), e.getAmount(), e.getMessage() );
+		this.overdraft = overdraft;
+	}
+
 	public double getOverdraft() {
 		return overdraft;
 	}
-
 }

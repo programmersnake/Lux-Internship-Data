@@ -1,6 +1,6 @@
-package com.luxoft.jva001p1.generics.xtasks.bankapp.domain;
+package jva_048.day_1.generics.bankapp.domain;
 
-import com.luxoft.jva001p1.generics.xtasks.bankapp.exceptions.NotEnoughFundsException;
+import jva_048.day_1.generics.bankapp.exceptions.NotEnoughFundsException;
 
 public abstract class AbstractAccount implements Account
 {
