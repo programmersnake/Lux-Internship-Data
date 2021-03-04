@@ -1,4 +1,4 @@
-package jva_048.day_2.shop;
+package jva_048.day_2.shop.Shop;
 
 public class Product_Count {
 

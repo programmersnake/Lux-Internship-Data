@@ -1,48 +1,83 @@
 package jva_048.day_2.shop.main;
 
-import jva_048.day_2.shop.Customer;
-import jva_048.day_2.shop.Product;
-import jva_048.day_2.shop.Shop;
-import jva_048.day_2.shop.ShopInterface;
+import jva_048.day_2.shop.Shop.ChickenShop;
+import jva_048.day_2.shop.Shop.Customer;
+import jva_048.day_2.shop.Shop.Product;
+import jva_048.day_2.shop.Shop.Shop;
 
 public class Launcher {
 
-    public static void main(String[] args) {
-        ShopInterface shop = new Shop();
+    public static void main(String[] args) throws InterruptedException {
+        Shop shop = new ChickenShop();
         Customer c1 = new Customer( "Denis" );
         Customer c2 = new Customer( "Anna" );
 
         shop.addNewCustomer( c1 );
         shop.addNewCustomer( c2 );
 
-        Product crow = new Product( 1, "Crow", 10, 5 );
-        Product parrot = new Product( 2, "Parrot", 15, 8 );
+        Product crow = new Product( 1, "Crow", 40, 30 );
+        Product chicken = new Product( 2, "Chicken", 15, 8 );
+        Product falcon = new Product( 3, "Falcon", 35, 28 );
+        Product duck = new Product( 3, "Duck", 17, 10 );
+        Product turkey = new Product( 3, "Turkey", 20, 15 );
 
         shop.addNewProductToStock( crow, 15 );
-        shop.addNewProductToStock( parrot, 25 );
+        shop.addNewProductToStock( chicken, 25 );
+        shop.addNewProductToStock( falcon, 30 );
+        shop.addNewProductToStock( duck, 50 );
+        shop.addNewProductToStock( turkey, 5 );
 
-        //
+        Thread.sleep( 500 );
 
         shop.getInfoAllBirdsInTheShop();
 
-        shop.sellToCustomer( c1, c1.getBasket() );
-        shop.sellToCustomer( c2, c2.getBasket() );
+        Thread.sleep( 500 );
 
-        c1.addProductToBasket( crow, 3 );
-        c1.addProductToBasket( parrot, 2 );
+        c1.addProductToBasket( crow, 1 );
+        c1.addProductToBasket( chicken, 5 );
+        c1.addProductToBasket( falcon, 3 );
+
+        Thread.sleep( 500 );
 
         c2.addProductToBasket( crow, 2 );
-        c2.addProductToBasket( parrot, 3 );
+        c2.addProductToBasket( chicken, 7 );
+        c2.addProductToBasket( duck, 3 );
+        c2.addProductToBasket( turkey, 1 );
+
+        Thread.sleep( 500 );
 
         shop.sellToCustomer( c1, c1.getBasket() );
         shop.sellToCustomer( c2, c2.getBasket() );
 
+        shop.getInfoAboutPastPurchases();
+
         shop.getInfoAllBirdsInTheShop();
+
 
         //
 
-        c1.getInfoAboutPastPurchases();
-        c2.getInfoAboutPastPurchases();
+        Thread.sleep( 500 );
+
+        c1.addProductToBasket( chicken, 15 );
+        c1.addProductToBasket( duck, 10 );
+        c1.addProductToBasket( turkey, 2 );
+
+        Thread.sleep( 500 );
+
+        c2.addProductToBasket( falcon, 3 );
+        c2.addProductToBasket( turkey, 2 );
+        c2.addProductToBasket( duck, 4 );
+        c2.addProductToBasket( turkey, 1 );
+
+        Thread.sleep( 500 );
+
+        shop.sellToCustomer( c1, c1.getBasket() );
+        shop.sellToCustomer( c2, c2.getBasket() );
+
+        shop.getInfoAboutPastPurchases();
+
+        shop.getInfoAllBirdsInTheShop();
+
 
     }
 

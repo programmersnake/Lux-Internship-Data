@@ -1,6 +1,6 @@
-package jva_048.day_2.shop;
+package jva_048.day_2.shop.Shop;
 
-public interface ShopInterface {
+public interface Shop {
 
     void addNewCustomer(Customer newCustomer);
 
@@ -10,8 +10,12 @@ public interface ShopInterface {
 
     void addNewProductToStock(Product newProduct, int count);
 
+    void editPriceForSale(Product product, double newPrice);
+
     void removeAllProductsFromStock();
 
     void getInfoAllBirdsInTheShop();
+
+    void getInfoAboutPastPurchases();
 
 }

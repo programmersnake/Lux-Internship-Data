@@ -1,4 +1,4 @@
-package jva_048.day_2.shop;
+package jva_048.day_2.shop.Shop;
 
 import java.time.LocalTime;
 import java.util.ArrayList;

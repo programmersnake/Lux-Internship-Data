@@ -1,4 +1,4 @@
-package jva_048.day_2.shop;
+package jva_048.day_2.shop.Shop;
 
 import java.util.HashMap;
 
@@ -24,9 +24,10 @@ public class Stock {
 
     void sellToCustomer(Basket basket) {
         for (Product_Count basketProduct_Count : basket.getProductList()) {
-            int countToBuy = basketProduct_Count.getCount();
             long idProduct = basketProduct_Count.getProduct().getID();
+            int countToBuy = basketProduct_Count.getCount();
             int countInTheStock = stock.get( idProduct ).getCount();
+
             if ( countInTheStock >= countToBuy ) {
                 stock.get( idProduct ).addSoldCount( countToBuy );
                 stock.get( idProduct ).setCount( countInTheStock - countToBuy );
@@ -34,16 +35,27 @@ public class Stock {
         }
     }
 
+    void editPriceForSale(Product product, double newPrice) {
+        if ( stock.containsValue( product ) ) {
+            product.setPrice( newPrice );
+        }
+    }
+
     void getInfoAboutALLBirdsInTheShop() {
         StringBuffer buffer = new StringBuffer();
         stock.forEach( (index, product_count) -> {
             buffer.append( System.lineSeparator() );
-            buffer.append( "#" + index.intValue() );
-            buffer.append( "; Name: " + product_count.getProduct().getType() );
-            buffer.append( "; Price for sale: " + product_count.getProduct().getPrice() );
-            buffer.append( "; Price for purchase: " + product_count.getProduct().getPricePurchase() );
-            buffer.append( "; Count in the Stock: " + product_count.getCount() );
-            buffer.append( "; Was sold: " + product_count.getSoldCount() );
+            buffer.append( "№" + index.intValue() );
+            buffer.append( System.lineSeparator() );
+            buffer.append( "   Name: " + product_count.getProduct().getType() );
+            buffer.append( System.lineSeparator() );
+            buffer.append( "   Price for sale: " + product_count.getProduct().getPrice() );
+            buffer.append( System.lineSeparator() );
+            buffer.append( "   Price for purchase: " + product_count.getProduct().getPricePurchase() );
+            buffer.append( System.lineSeparator() );
+            buffer.append( "   Count in the Stock: " + product_count.getCount() );
+            buffer.append( System.lineSeparator() );
+            buffer.append( "   Was sold: " + product_count.getSoldCount() );
         } );
 
         System.out.println( buffer.toString() );
