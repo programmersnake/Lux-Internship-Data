@@ -1,15 +1,17 @@
-package com.luxoft.jva001p1.generics.xtasks.bankapp.domain;
+package jva_048.day_1.generics.bankapp.domain;
 
 public enum Gender {
-	MALE("Mr."), FEMALE("Ms.");
 
-	private String greeting;
+    MALE( "Mr." ), FEMALE( "Ms." );
 
-	private Gender(String greeting) {
-		this.greeting = greeting;
-	}
+    private String greeting;
 
-	public String getGreeting() {
-		return greeting;
-	}
+    private Gender(String greeting) {
+        this.greeting = greeting;
+    }
+
+    public String getGreeting() {
+        return greeting;
+    }
+
 }

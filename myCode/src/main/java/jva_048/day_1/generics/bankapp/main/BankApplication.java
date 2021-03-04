@@ -1,9 +1,6 @@
 package jva_048.day_1.generics.bankapp.main;
 
-import jva_048.day_1.generics.bankapp.domain.Account;
-import jva_048.day_1.generics.bankapp.domain.Bank;
-import jva_048.day_1.generics.bankapp.domain.CheckingAccount;
-import jva_048.day_1.generics.bankapp.domain.SavingAccount;
+import jva_048.day_1.generics.bankapp.domain.*;
 import jva_048.day_1.generics.bankapp.service.BankService;
 
 public class BankApplication {

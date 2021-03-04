@@ -1,26 +1,26 @@
-package com.luxoft.jva001p1.generics.xtasks.bankapp.domain;
+package jva_048.day_1.generics.bankapp.domain;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Client
-{
+public class Client {
+
     private String name;
     private Gender gender;
 
-    private Account[] accounts;
+    private List<Account> accounts;
     private int countOfAccounts;
 
-    public Client(String name, Gender gender)
-    {
+    public Client(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
-        this.accounts = new Account[100];
+        this.accounts = new ArrayList<>();
         countOfAccounts = 0;
     }
 
     public void addAccount(final Account account)
     {
-        accounts[countOfAccounts++] = account;
+        accounts.add( account );
     }
 
     public String getName()
@@ -33,9 +33,8 @@ public class Client
         return gender;
     }
 
-    public Account[] getAccounts()
-    {
-        return Arrays.copyOf(accounts, accounts.length);
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
     public String getClientGreeting()
@@ -55,5 +54,6 @@ public class Client
     {
         return getClientGreeting();
     }
+
 
 }
