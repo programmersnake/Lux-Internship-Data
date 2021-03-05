@@ -1,4 +1,4 @@
-package jva_048.day_2.shop.realization;
+package jva_048.day_2.shop.realization.entities;
 
 public class Customer {
 

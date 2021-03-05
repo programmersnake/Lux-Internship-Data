@@ -1,17 +1,23 @@
-package jva_048.day_2.shop.realization;
+package jva_048.day_2.shop.realization.services;
+
+import jva_048.day_2.shop.realization.entities.Basket;
+import jva_048.day_2.shop.realization.entities.Customer;
+import jva_048.day_2.shop.realization.entities.HistoryBasket;
+import jva_048.day_2.shop.realization.entities.Product;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ChickenShop implements Shop {
 
     private Stock stock;
     private Map<Customer, HistoryBasket> basketsHistory;
+    private Report reporter;
 
     public ChickenShop() {
         stock = new Stock();
         basketsHistory = new HashMap<>();
+        reporter = new Reporter();
     }
 
     @Override
@@ -50,6 +56,14 @@ public class ChickenShop implements Shop {
         stock.editPriceForSale( product, newPrice );
     }
 
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public void setReporter(Report reporter) {
+        this.reporter = reporter;
+    }
+
     @Override
     public void getInfoAllBirdsInTheShop() {
         System.out.println();
@@ -59,29 +73,7 @@ public class ChickenShop implements Shop {
     }
 
     public void getInfoAboutPastPurchases() {
-        StringBuffer buffer = new StringBuffer();
-
-        buffer.append( System.lineSeparator() );
-        buffer.append( "-----HISTORY_BASKET-----" );
-
-        basketsHistory.forEach( (customer, boughtBasket) -> {
-            List<String> history = boughtBasket.getHistory();
-            List<String> times = boughtBasket.getTimes();
-
-            buffer.append( System.lineSeparator() );
-            buffer.append( "---Customer name: " + customer.getName() + "---" );
-
-            for (int i = 0; i < history.size(); i++) {
-                buffer.append( System.lineSeparator() );
-                buffer.append( "№" + i );
-                buffer.append( " [Time: " + times.get( i ) + "]" );
-                buffer.append( System.lineSeparator() );
-                buffer.append( "    Type: " + history.get( i ) );
-            }
-
-        } );
-
-        System.out.println( buffer.toString() );
+        reporter.getInfoAboutPastPurchases( basketsHistory );
     }
 
 }

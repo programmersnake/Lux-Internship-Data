@@ -1,4 +1,8 @@
-package jva_048.day_2.shop.realization;
+package jva_048.day_2.shop.realization.services;
+
+import jva_048.day_2.shop.realization.entities.Basket;
+import jva_048.day_2.shop.realization.entities.Customer;
+import jva_048.day_2.shop.realization.entities.Product;
 
 public interface Shop {
 

@@ -1,4 +1,7 @@
-package jva_048.day_2.shop.realization;
+package jva_048.day_2.shop.realization.services;
+
+import jva_048.day_2.shop.realization.entities.Basket;
+import jva_048.day_2.shop.realization.entities.Product;
 
 import java.util.HashMap;
 
@@ -49,17 +52,17 @@ public class Stock {
         StringBuffer buffer = new StringBuffer();
         stock.forEach( (index, product_count) -> {
             buffer.append( System.lineSeparator() );
-            buffer.append( "№" + index.intValue() );
+            buffer.append( "№" ).append( index.intValue() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Name: " + product_count.getType() );
+            buffer.append( "   Name: " ).append( product_count.getType() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Price for sale: " + product_count.getPrice() );
+            buffer.append( "   Price for sale: " ).append( product_count.getPrice() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Price for purchase: " + product_count.getPricePurchase() );
+            buffer.append( "   Price for purchase: " ).append( product_count.getPricePurchase() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Count in the Stock: " + product_count.getCountInTheStock() );
+            buffer.append( "   Count in the Stock: " ).append( product_count.getCountInTheStock() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Was sold: " + product_count.getSoldCount() );
+            buffer.append( "   Was sold: " ).append( product_count.getSoldCount() );
         } );
 
         System.out.println( buffer.toString() );

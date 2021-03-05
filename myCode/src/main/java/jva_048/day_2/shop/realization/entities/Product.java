@@ -1,4 +1,4 @@
-package jva_048.day_2.shop.realization;
+package jva_048.day_2.shop.realization.entities;
 
 public class Product {
 
@@ -62,13 +62,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                ", pricePurchase=" + pricePurchase +
-                ", countInTheStock=" + countInTheStock +
-                ", soldCount=" + soldCount +
-                '}';
+        return "" + type +
+                " | " + price +
+                " | " + pricePurchase +
+                " | " + countInTheStock +
+                " | " + soldCount +
+                " | " + System.lineSeparator();
     }
 }
