@@ -1,9 +1,9 @@
 package jva_048.day_2.shop.main;
 
-import jva_048.day_2.shop.Shop.ChickenShop;
-import jva_048.day_2.shop.Shop.Customer;
-import jva_048.day_2.shop.Shop.Product;
-import jva_048.day_2.shop.Shop.Shop;
+import jva_048.day_2.shop.realization.ChickenShop;
+import jva_048.day_2.shop.realization.Customer;
+import jva_048.day_2.shop.realization.Product;
+import jva_048.day_2.shop.realization.Shop;
 
 public class Launcher {
 

@@ -1,4 +1,4 @@
-package jva_048.day_2.shop.Shop;
+package jva_048.day_2.shop.realization;
 
 import java.util.ArrayList;
 import java.util.Collections;
