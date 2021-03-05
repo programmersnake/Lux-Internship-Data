@@ -4,12 +4,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoughtBasket {
+public class HistoryBasket {
 
     private List<String> history;
     private List<String> times;
 
-    public BoughtBasket() {
+    public HistoryBasket() {
         history = new ArrayList<>();
         times = new ArrayList<>();
     }

@@ -7,7 +7,7 @@ import java.util.Map;
 public class ChickenShop implements Shop {
 
     private Stock stock;
-    private Map<Customer, BoughtBasket> basketsHistory;
+    private Map<Customer, HistoryBasket> basketsHistory;
 
     public ChickenShop() {
         stock = new Stock();
@@ -17,7 +17,7 @@ public class ChickenShop implements Shop {
     @Override
     public void addNewCustomer(Customer newCustomer) {
         if ( !basketsHistory.containsKey( newCustomer ) )
-            basketsHistory.put( newCustomer, new BoughtBasket() );
+            basketsHistory.put( newCustomer, new HistoryBasket() );
     }
 
     @Override

@@ -3,23 +3,28 @@ package jva_048.day_2.shop.realization;
 public class Customer {
 
     private String name;
-    private Basket basket;
+    private Basket basket = null;
 
     public Customer(String name) {
         this.name = name;
-        basket = new Basket();
     }
 
     public void addProductToBasket(Product newProduct, int count) {
+        if ( basket == null )
+            basket = new Basket();
         basket.addProduct( newProduct, count );
     }
 
     public void clearBasket() {
-        basket.clearBasket();
+        basket = new Basket();
     }
 
     public Basket getBasket() {
         return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     public String getName() {
