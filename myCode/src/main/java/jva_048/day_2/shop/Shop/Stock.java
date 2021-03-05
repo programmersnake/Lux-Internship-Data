@@ -26,19 +26,22 @@ public class Stock {
         for (Product_Count basketProduct_Count : basket.getProductList()) {
             long idProduct = basketProduct_Count.getProduct().getID();
             int countToBuy = basketProduct_Count.getCount();
-            int countInTheStock = stock.get( idProduct ).getCount();
+            if ( stock.containsKey( idProduct ) ) {
+                int countInTheStock = stock.get( idProduct ).getCount();
 
-            if ( countInTheStock >= countToBuy ) {
-                stock.get( idProduct ).addSoldCount( countToBuy );
-                stock.get( idProduct ).setCount( countInTheStock - countToBuy );
+                if ( countInTheStock >= countToBuy ) {
+                    stock.get( idProduct ).addSoldCount( countToBuy );
+                    stock.get( idProduct ).setCount( countInTheStock - countToBuy );
+                }
             }
         }
     }
 
     void editPriceForSale(Product product, double newPrice) {
-        if ( stock.containsValue( product ) ) {
-            product.setPrice( newPrice );
-        }
+        //System.out.println("edit price: " + stock.containsValue( product ) );
+        //if ( stock.containsValue( product ) ) {
+        product.setPrice( newPrice );
+        //}
     }
 
     void getInfoAboutALLBirdsInTheShop() {

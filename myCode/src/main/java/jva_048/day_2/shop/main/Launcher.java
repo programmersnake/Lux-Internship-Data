@@ -18,8 +18,8 @@ public class Launcher {
         Product crow = new Product( 1, "Crow", 40, 30 );
         Product chicken = new Product( 2, "Chicken", 15, 8 );
         Product falcon = new Product( 3, "Falcon", 35, 28 );
-        Product duck = new Product( 3, "Duck", 17, 10 );
-        Product turkey = new Product( 3, "Turkey", 20, 15 );
+        Product duck = new Product( 4, "Duck", 17, 10 );
+        Product turkey = new Product( 5, "Turkey", 20, 15 );
 
         shop.addNewProductToStock( crow, 15 );
         shop.addNewProductToStock( chicken, 25 );
@@ -55,6 +55,8 @@ public class Launcher {
 
 
         //
+
+        shop.editPriceForSale( turkey, 100.11 );
 
         Thread.sleep( 500 );
 
