@@ -1,4 +1,4 @@
-package jva_048.day_2.shop.main;
+package jva_048.day_2.shop;
 
 import jva_048.day_2.shop.realization.ChickenShop;
 import jva_048.day_2.shop.realization.Customer;
