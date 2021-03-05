@@ -6,32 +6,33 @@ import java.util.List;
 
 public class Basket {
 
-    private List<Product_Count> basket;
+    private List<Product> basketList;
 
     public Basket() {
-        basket = new ArrayList<>();
+        basketList = new ArrayList<>();
     }
 
     public void addProduct(Product newProduct, int count) {
-        basket.add( new Product_Count( newProduct, count ) );
+        newProduct.setCountInTheStock( count );
+        basketList.add( newProduct );
     }
 
     public void clearBasket() {
-        basket = new ArrayList<>();
+        basketList = new ArrayList<>();
     }
 
-    public List<Product_Count> getProductList() {
-        return Collections.unmodifiableList( basket );
+    public List<Product> getProductList() {
+        return Collections.unmodifiableList( basketList );
     }
 
-    public void setBasket(List<Product_Count> basket) {
-        this.basket = basket;
+    public void setBasket(List<Product> basket) {
+        this.basketList = basket;
     }
 
     @Override
     public String toString() {
         return "Basket{" +
-                "basket=" + basket +
+                "basketList=" + basketList +
                 '}';
     }
 }

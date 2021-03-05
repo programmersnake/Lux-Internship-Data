@@ -4,17 +4,18 @@ import java.util.HashMap;
 
 public class Stock {
 
-    private HashMap<Long, Product_Count> stock;
+    private HashMap<Long, Product> stock;
 
     public Stock() {
         stock = new HashMap<>();
     }
 
     public void addNewProductToStock(Product newProduct, int count) {
-        if ( !stock.containsKey( newProduct.getID() ) ) {
-            stock.put( newProduct.getID(), new Product_Count( newProduct, count ) );
+        if ( !stock.containsKey( newProduct.getId() ) ) {
+            newProduct.setCountInTheStock( count );
+            stock.put( newProduct.getId(), newProduct );
         } else {
-            stock.get( newProduct.getID() ).setCount( count );
+            stock.get( newProduct.getId() ).setCountInTheStock( count );
         }
     }
 
@@ -23,25 +24,25 @@ public class Stock {
     }
 
     void sellToCustomer(Basket basket) {
-        for (Product_Count basketProduct_Count : basket.getProductList()) {
-            long idProduct = basketProduct_Count.getProduct().getID();
-            int countToBuy = basketProduct_Count.getCount();
+        for (Product basketProduct_Count : basket.getProductList()) {
+            long idProduct = basketProduct_Count.getId();
+            int countToBuy = basketProduct_Count.getCountInTheStock();
             if ( stock.containsKey( idProduct ) ) {
-                int countInTheStock = stock.get( idProduct ).getCount();
+                int countInTheStock = stock.get( idProduct ).getCountInTheStock();
 
                 if ( countInTheStock >= countToBuy ) {
-                    stock.get( idProduct ).addSoldCount( countToBuy );
-                    stock.get( idProduct ).setCount( countInTheStock - countToBuy );
+                    int newSoldCount = stock.get( idProduct ).getSoldCount() + countToBuy;
+                    int newCountInTheStock = countInTheStock - countToBuy;
+
+                    stock.get( idProduct ).setSoldCount( newSoldCount );
+                    stock.get( idProduct ).setCountInTheStock( newCountInTheStock );
                 }
             }
         }
     }
 
     void editPriceForSale(Product product, double newPrice) {
-        //System.out.println("edit price: " + stock.containsValue( product ) );
-        //if ( stock.containsValue( product ) ) {
         product.setPrice( newPrice );
-        //}
     }
 
     void getInfoAboutALLBirdsInTheShop() {
@@ -50,13 +51,13 @@ public class Stock {
             buffer.append( System.lineSeparator() );
             buffer.append( "№" + index.intValue() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Name: " + product_count.getProduct().getType() );
+            buffer.append( "   Name: " + product_count.getType() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Price for sale: " + product_count.getProduct().getPrice() );
+            buffer.append( "   Price for sale: " + product_count.getPrice() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Price for purchase: " + product_count.getProduct().getPricePurchase() );
+            buffer.append( "   Price for purchase: " + product_count.getPricePurchase() );
             buffer.append( System.lineSeparator() );
-            buffer.append( "   Count in the Stock: " + product_count.getCount() );
+            buffer.append( "   Count in the Stock: " + product_count.getCountInTheStock() );
             buffer.append( System.lineSeparator() );
             buffer.append( "   Was sold: " + product_count.getSoldCount() );
         } );
@@ -64,7 +65,7 @@ public class Stock {
         System.out.println( buffer.toString() );
     }
 
-    public HashMap<Long, Product_Count> getStock() {
+    public HashMap<Long, Product> getStock() {
         return stock;
     }
 }

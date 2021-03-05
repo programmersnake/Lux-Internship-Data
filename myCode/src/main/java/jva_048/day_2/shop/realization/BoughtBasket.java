@@ -25,8 +25,8 @@ public class BoughtBasket {
 
     private double totalPriceInTheBasket(Basket basket) {
         double totalPrice = 0.0;
-        for (Product_Count product_count : basket.getProductList()) {
-            totalPrice += product_count.getProduct().getPrice();
+        for (Product product : basket.getProductList()) {
+            totalPrice += product.getPrice();
         }
 
         return totalPrice;
