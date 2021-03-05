@@ -27,4 +27,11 @@ public class Basket {
     public void setBasket(List<Product_Count> basket) {
         this.basket = basket;
     }
+
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "basket=" + basket +
+                '}';
+    }
 }

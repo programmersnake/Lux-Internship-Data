@@ -65,7 +65,7 @@ public class ChickenShop implements Shop {
         buffer.append( "-----HISTORY_BASKET-----" );
 
         basketsHistory.forEach( (customer, boughtBasket) -> {
-            List<Basket> history = boughtBasket.getHistory();
+            List<String> history = boughtBasket.getHistory();
             List<String> times = boughtBasket.getTimes();
 
             buffer.append( System.lineSeparator() );
@@ -76,7 +76,7 @@ public class ChickenShop implements Shop {
                 buffer.append( "№" + i );
                 buffer.append( " [Time: " + times.get( i ) + "]" );
                 buffer.append( System.lineSeparator() );
-                buffer.append( "    Type: " + history.get( i ).getProductList() );
+                buffer.append( "    Type: " + history.get( i ) );
             }
 
         } );
