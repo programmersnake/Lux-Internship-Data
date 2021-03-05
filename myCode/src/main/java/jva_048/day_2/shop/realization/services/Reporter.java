@@ -33,13 +33,9 @@ public class Reporter implements Report {
                 buffer.append( System.lineSeparator() );
                 buffer.append( "    Transaction: " );
                 buffer.append( System.lineSeparator() );
-                buffer.append( "_____________________________________________________________ " );
-                buffer.append( System.lineSeparator() );
                 buffer.append( "| type | price | Price Purchase | CountInStock | CountWasBuy | " );
                 buffer.append( System.lineSeparator() );
                 buffer.append( history.get( i ) );
-                buffer.append( System.lineSeparator() );
-                buffer.append( "_____________________________________________________________ " );
             }
 
         } );
