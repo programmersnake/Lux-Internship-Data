@@ -26,6 +26,7 @@
         <module>untitled</module>
         <module>myCode</module>
         <module>JVA_045</module>
+        <module>junit</module>
     </modules>
     <dependencies>
         <dependency>
