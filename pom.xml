@@ -22,17 +22,30 @@
             </plugin>
         </plugins>
     </build>
+
     <modules>
-        <module>untitled</module>
         <module>myCode</module>
         <module>JVA_045</module>
         <module>junit</module>
+        <module>junit_labs</module>
     </modules>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>2.0.2-beta</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
